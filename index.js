@@ -5,6 +5,7 @@ function damageSimulation(){
   const damageAmt = Math.floor(Math.random() * 20);
   const roll = Math.floor(Math.random() * 10);
   if(healthPoints <= 0){
+    console.log('YOU R DED.');
     clearInterval(this);
     return;
   }
