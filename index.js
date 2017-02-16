@@ -1,21 +1,24 @@
-var healthPoints = 100;
+'use strict';
+
+let healthPoints = 100;
 setInterval(damageSimulation, 750);
 
-function damageSimulation(){
-  const damageAmt = Math.floor(Math.random() * 20);
-  const roll = Math.floor(Math.random() * 10);
-  if(healthPoints <= 0){
-    console.log('YOU R DED.');
+function damageSimulation() {
+
+  if (healthPoints > 0) {
+    const damageAmt = Math.floor(Math.random() * 30);
+    const roll = Math.floor(Math.random() * 10);
+    if (roll >= 5) {
+      healthPoints -= damageAmt;
+      console.log(`Took ${damageAmt} damage.`);
+    }
+    const remainingHealth = healthPoints > 0 ? healthPoints : 0;
+    console.log('****************');
+    console.log(`Remaining Health: ${remainingHealth}%`);
+    console.log('****************');
+  }else{
+    console.log('YOU HAVE DIED.');
     clearInterval(this);
-    return;
-  }
-  console.log('****************');
-  if (roll > 5) {
-    healthPoints -= damageAmt;
-    console.log('HIT!', `${damageAmt}: points`);
   }
 
-  const remainingHealth = healthPoints > 0 ? healthPoints : 0;
-  console.log('Remaining Health:', remainingHealth);
-  console.log('****************');
 }
