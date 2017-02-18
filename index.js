@@ -1,17 +1,6 @@
 export class War {
   constructor(props) {
-
-  }
-
-  beginWarSimulation() {
-    this.constructFighters().forEach((country, i) => {
-      console.log(`BEGINNING ROUND FOR ${country.name.toUpperCase()}`);
-      this.damageSimulation(country);
-    })
-  }
-
-  constructFighters() {
-    const fightersArray = [
+    this.fighters = [
       {
         name: 'Texas Red',
         healthPoints: 100
@@ -21,7 +10,13 @@ export class War {
         healthPoints: 75
       }
     ];
-    return fightersArray;
+  }
+
+  beginWarSimulation() {
+    this.fighters.forEach((country, i) => {
+      console.log(`BEGINNING ROUND FOR ${country.name.toUpperCase()}`);
+      this.damageSimulation(country);
+    })
   }
 
   damageSimulation(obj) {
