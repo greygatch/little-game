@@ -1,12 +1,12 @@
 export class War {
   constructor(props) {
-    super(props);
+
   }
 
   beginWarSimulation() {
     this.constructFighters().forEach((country, i) => {
       console.log(`BEGINNING ROUND FOR ${country.name.toUpperCase()}`);
-      this.damageSimulation(country.healthPoints);
+      this.damageSimulation(country);
     })
   }
 
@@ -24,9 +24,10 @@ export class War {
     return fightersArray;
   }
 
-  damageSimulation(healthPoints) {
+  damageSimulation(obj) {
+    let healthPoints = obj.healthPoints;
 
-    if (healthPoints > 0) {
+    while (healthPoints > 0) {
       const roll = Math.floor(Math.random() * 10);
 
       if (roll >= 5) {
@@ -45,11 +46,10 @@ export class War {
       }
       const remainingHealth = healthPoints > 0 ? healthPoints : 0;
       console.log('****************');
-      console.log(`Remaining Health: ${remainingHealth.toFixed(2)}%`);
+      console.log(`Remaining Health for ${obj.name.toUpperCase()}: ${remainingHealth.toFixed(2)}%`);
       console.log('****************');
-    } else {
-      console.log('YOU HAVE DIED.');
     }
+    console.log('YOU HAVE DIED.');
 
   }
 }
